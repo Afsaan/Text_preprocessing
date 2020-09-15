@@ -6,6 +6,9 @@ import inflect
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
+#uncomment this to download stopwords
+# nltk.download('stopwords')
+# nltk.download('punkt')
 
 class text_preprocess():
     def __init__(self):
@@ -36,8 +39,12 @@ class text_preprocess():
     def remove_punctuation(self , text):
         print(text.translate(self.translator))
 
-    def remove_stopwords(self):
-        pass
+    def remove_stopwords(self, text):
+        stopword = list(stopwords.words('english'))
+        token = word_tokenize(text)
+        word = [word for word in token if word not in stopword]
+        temp_str = " ".join(word)
+        print(temp_str)
 
     def stemming(self):
         pass
@@ -58,6 +65,6 @@ if __name__ == "__main__":
     nltk = text_preprocess()
     # nltk.lower_case('Hello WORLD')
     # nltk.remove_numbers_from_txt('hello 4 world')
-    # nltk.convert_num_to_text('you bought 6 candies and 4 are at home')
-    nltk.remove_punctuation('hello!!! , world!!!!!')
+    nltk.remove_stopwords('you bought 6 candies and 4 are at home')
+    # nltk.remove_punctuation('hello!!! , world!!!!!')
 
