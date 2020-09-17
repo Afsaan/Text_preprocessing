@@ -37,6 +37,30 @@ class Text_blob:
         word = Word(text)
         print(word.definitions)
 
+    def spelling_correction(self , text):
+        word = TextBlob(text)
+        print(word.correct())
+
+    def spell_check(self , text):
+        word = Word(text)
+        print(word.spellcheck())
+
+    def word_freq(self, text):
+        word = TextBlob(text)
+        print(word.word_counts)
+
+    def language_translation_eng_to_hindi(self , text):
+        blob = TextBlob(text)
+        print(blob.translate(to='hi'))
+
+    def language_translation_chinese_to_eng(self, text):
+        blob = TextBlob(text)
+        print(blob.translate(from_lang='zh-CN' , to='en'))
+
+    def language_detection(self , text):
+        blob = TextBlob(text)
+        print(blob.detect_language())
+
 
 
 
@@ -46,6 +70,13 @@ if __name__ == '__main__':
     # blob.noun_phrase_extraction('hello this is Virat Kholi here')
     # blob.tokenize('you are very very good')
     # blob.lemmatization('you are very very good')
-    blob.meaning_of_word('computer')
+    # blob.spelling_correction('i have a good coputer')
+    # blob.word_freq('you are very very good')
+    # blob.language_translation_eng_to_hindi(u'go and die')
+    # blob.language_translation_chinese_to_eng(u'有总比没有好')
+    # blob.language_detection(u'有总比没有好')
+
+
+
 
 
