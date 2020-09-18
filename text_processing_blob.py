@@ -61,6 +61,10 @@ class Text_blob:
         blob = TextBlob(text)
         print(blob.detect_language())
 
+    def n_grams(self, text):
+        blob = TextBlob(text)
+        print(blob.ngrams(n=3))
+
 
 
 
@@ -75,6 +79,8 @@ if __name__ == '__main__':
     # blob.language_translation_eng_to_hindi(u'go and die')
     # blob.language_translation_chinese_to_eng(u'有总比没有好')
     # blob.language_detection(u'有总比没有好')
+    blob.n_grams('hello this is Virat Kholi here')
+
 
 
 
