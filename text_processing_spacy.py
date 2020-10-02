@@ -1,7 +1,11 @@
 import spacy
 from spacy import displacy
+import spacy.cli
+
+# spacy.cli.download('en_core_web_md')
 
 nlp = spacy.load('en_core_web_sm')
+nlp_md = spacy.load('en_core_web_md')
 class Spacy():
 
     def tokenization(self , text):
@@ -26,6 +30,17 @@ class Spacy():
     def dispay_dependencies(self, text):
         doc = nlp(text)
         displacy.serve(doc , style = 'ent') #dep means dependency
+    
+    def vector(self, text):
+        tokens = nlp_md(text)
+        for token in tokens:
+            print(token.has_vector, token.vector_norm )
+    
+    def similarity(self, text):
+        tokens = nlp_md(text)
+        for token1 in tokens:
+            for token2 in tokens:
+                print(token1.text, token2.text , token1.similarity(token2) )
 
 
 if __name__ == '__main__':
@@ -34,6 +49,10 @@ if __name__ == '__main__':
     # obj.part_of_Speech('Apple is looking at buying U.K. startup for $1 million')
     # obj.dispay('Apple is looking at buying U.K. startup for $1 million')
     # obj.dispay('Apple is looking at buying U.K. startup for $1 million')
-    obj.entities('Apple is looking at buying U.K. startup for $1 million')
+    # obj.entities('Apple is looking at buying U.K. startup for $1 million')
+    # obj.dispay_dependencies('Apple is looking at buying U.K. startup for $1 million')
+    # obj.vector('Apple Banana king queen sadfsdfsadfsadfsadf')
+    obj.similarity('Apple Banana king queen sadfsdfsadfsadfsadf')
+
     
 
